@@ -19,4 +19,16 @@ spec:
         image: sukanya996/bule-green:blue-1
         ports:
         - containerPort: 5000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+         initialDelaySeconds: 15
+         periodSeconds: 20
 
