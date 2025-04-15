@@ -25,10 +25,9 @@ spec:
             port: 5000
           initialDelaySeconds: 5
           periodSeconds: 10
-       livenessProbe:
-         httpGet:
-           path: /
-           port: 5000
-        initialDelaySeconds: 15
-        periodSeconds: 20
-
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 15
+          periodSeconds: 20
