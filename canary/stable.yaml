@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app
-        image: sukanya996/flaskimg-app:11
+        image: sukanya996/web
         ports:
         - containerPort: 5000
