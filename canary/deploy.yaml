@@ -1,33 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-canary
+  name: myapp-v1
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: myapp
-      version: v2
+      version: v1
   template:
     metadata:
       labels:
         app: myapp
-        version: v2
+        version: v1
     spec:
       containers:
-      - name: myapp
-        image: sukanya996/bule-green:green-1
+      - name: app
+        image: sukanya996/flaskimg-app:1
         ports:
         - containerPort: 5000
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 5000
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 5000
-          initialDelaySeconds: 15
-          periodSeconds: 20
