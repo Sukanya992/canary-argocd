@@ -17,11 +17,11 @@ spec:
           service:
             name: flask-app-primary
             port:
-              number: 80
+              number: 5000
       - path: /canary
         pathType: Prefix
         backend:
           service:
             name: flask-app-canary
             port:
-              number: 80
+              number: 5000
