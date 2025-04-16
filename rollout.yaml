@@ -9,16 +9,6 @@ spec:
   selector:
     matchLabels:
       app: flask
-  template:
-    metadata:
-      labels:
-        app: flask
-    spec:
-      containers:
-        - name: flask
-          image: sukanya996/flaskimg-app:v1
-          ports:
-            - containerPort: 5000
   strategy:
     canary:
       steps:
@@ -29,4 +19,13 @@ spec:
         - pause:
             duration: 60s
         - setWeight: 100
-
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+        - name: flask
+          image: sukanya996/flaskimg-app:v1
+          ports:
+            - containerPort: 5000
