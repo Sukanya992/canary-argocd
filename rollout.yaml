@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: flask-rollout
+  labels:
+    app: flask
 spec:
   replicas: 3
   selector:
@@ -11,17 +13,20 @@ spec:
     metadata:
       labels:
         app: flask
-  spec:
-    containers:
-      - name: flask
-        image: sukanya996/flaskimg-app:v1  # <-- Initial version
-        ports:
-          - containerPort: 5000
+    spec:
+      containers:
+        - name: flask
+          image: sukanya996/flaskimg-app:v1
+          ports:
+            - containerPort: 5000
   strategy:
     canary:
       steps:
         - setWeight: 20
-        - pause: { duration: 30s }
+        - pause:
+            duration: 30s
         - setWeight: 50
-        - pause: { duration: 60s }
+        - pause:
+            duration: 60s
         - setWeight: 100
+
